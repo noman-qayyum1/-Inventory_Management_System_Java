@@ -1,0 +1,30 @@
+
+         if(checkD==true){
+          for(int j =0;j<salelineitem.size();j++){
+             SaleLineItem sli= (SaleLineItem)salelineitem.get(j);
+             if (S.getOrderID().equals(sli.getOrderID())){
+              int index = itemManage.getindex(sli.getItemID());
+              Item it = (Item)item.get(index);
+              Item FI = new Item(it.getItemID(),it.getDescription(),sli.getAmount(),sli.getQuantity(),S.getDate());
+              I.add(FI);
+             }
+
+          }
+         }
+       }
+  }
+  Double total = 0.0;
+  out = out +"______________________________\n";
+  out = out+" ITemID       Discription               Quantity Sold        Amount         Sale Date    \n";
+  out = out +"_______________________________\n";
+
+for(int i = 0; i< I.size();i++ ){
+Item IT = (Item)I.get(i);
+out=out+IT.getItemID()+"       "+IT.getDescription()+"              "+IT.getQuantity()+"        "+IT.getPrice()+"        "+IT.getCreationDate()+"\n";
+total = total+IT.getPrice();
+}
+out = out +"_______________________________\n"; 
+out=out+"                                                            Total Sales:    Rs."+total;
+out = out +"\n______________________________\n"; 
+JOptionPane.showMessageDialog(null, out);
+}
